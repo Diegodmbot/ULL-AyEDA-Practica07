@@ -15,7 +15,6 @@ class NodoB{
   NodoB<Key> *GetDcho() const;
   void SetIzdo(NodoB<Key> *izdo);
   void SetDcho(NodoB<Key> *dcho);
-  void SetDato(Key dato);
   Key GetDato() const;
  private:
   Key dato;

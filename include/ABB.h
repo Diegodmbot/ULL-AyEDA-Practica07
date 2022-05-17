@@ -9,7 +9,7 @@
 
 template<class Key>
 class ABB : public AB<Key> {
-  bool InsertarRama(NodoB<Key> *nodo,Key k);
+  bool InsertarRama(NodoB<Key> *nodo, Key k);
   bool BuscarRama(NodoB<Key> *nodo, Key k) const;
   // metodos de la clase AB
   bool insertar(const Key &k);
@@ -19,27 +19,29 @@ class ABB : public AB<Key> {
 
 template<class Key>
 bool ABB<Key>::insertar(const Key &k) {
-  if(this->GetRoot() == nullptr) {
+  if (this->GetRoot() == nullptr) {
     AB<Key>::root = new NodoB<int>(k);
     return true;
-  }
-  else
-    return InsertarRama(this->GetRoot(), k);
+  } else
+    return InsertarRama( AB<Key>::root, k);
 }
 
 template<class Key>
-bool ABB<Key>::InsertarRama(NodoB<Key> *nodo, Key k) {
-  if(buscar(k))
+bool ABB<Key>::InsertarRama(NodoB<Key>* nodo, Key k) {
+  if(k < nodo->GetDato()) {
+    if(nodo->GetIzdo() == nullptr) {
+      nodo->SetIzdo(new NodoB<Key>(k));
+      return true;
+    } else
+      return InsertarRama(nodo->GetIzdo(), k);
+  } else if(k > nodo->GetDato()) {
+    if(nodo->GetDcho() == nullptr) {
+      nodo->SetDcho(new NodoB<Key>(k));
+      return true;
+    } else
+      return InsertarRama(nodo->GetDcho(), k);
+  } else
     return false;
-  if (nodo == nullptr){
-    nodo = new NodoB<Key>(k);
-    return true;
-  }
-  else if (k < nodo->GetDato())
-    InsertarRama(nodo->GetIzdo(), k);
-  else
-    InsertarRama(nodo->GetDcho(), k);
-  return false;
 }
 
 template<class Key>
@@ -48,11 +50,11 @@ bool ABB<Key>::buscar(const Key &k) const {
 }
 
 template<class Key>
-bool ABB<Key>::BuscarRama(NodoB<Key> *nodo, Key k) const{
+bool ABB<Key>::BuscarRama(NodoB<Key> *nodo, Key k) const {
   if (nodo == nullptr)
-    return false ;
+    return false;
   if (k == nodo->GetDato())
-    return true ;
+    return true;
   if (k < nodo->GetDato())
     return BuscarRama(nodo->GetIzdo(), k);
   return BuscarRama(nodo->GetDcho(), k);
