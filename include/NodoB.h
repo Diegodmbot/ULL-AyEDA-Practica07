@@ -7,13 +7,15 @@
 
 template <class Key>
 class NodoB{
-  NodoB(Key dato_, NodoB<Key>* izdo_, NodoB<Key>* dcho_) : dato(dato_), izdo(izdo_), dcho(dcho_){}
+ public:
+  NodoB(Key dato_, NodoB<Key>* izdo_ = nullptr, NodoB<Key>* dcho_ = nullptr) : dato(dato_), izdo(izdo_), dcho(dcho_){}
   NodoB() : izdo(nullptr), dcho(nullptr){}
   ~NodoB() = default;
-  Key getDato() const { return dato; }
- public:
   NodoB<Key> *GetIzdo() const;
   NodoB<Key> *GetDcho() const;
+  void SetIzdo(NodoB<Key> *izdo);
+  void SetDcho(NodoB<Key> *dcho);
+  void SetDato(Key dato);
   Key GetDato() const;
  private:
   Key dato;
@@ -31,6 +33,14 @@ NodoB<Key> *NodoB<Key>::GetDcho() const {
 template<class Key>
 Key NodoB<Key>::GetDato() const {
   return dato;
+}
+template<class Key>
+void NodoB<Key>::SetIzdo(NodoB<Key> *izdo) {
+  NodoB::izdo = izdo;
+}
+template<class Key>
+void NodoB<Key>::SetDcho(NodoB<Key> *dcho) {
+  NodoB::dcho = dcho;
 }
 
 #endif //P07DIEGODIAZMORON_INCLUDE_NODOB_H_
