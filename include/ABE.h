@@ -29,6 +29,9 @@ bool ABE<Key>::insertar(const Key &k) {
 
 template<class Key>
 void ABE<Key>::InsertaEquil(const Key &k) {
+  if(buscar(k)){
+    return;
+  }
   if (AB<Key>::root == nullptr)
     AB<Key>::root = new NodoB<int>(k);
   else InsertaEquilRama(k, AB<Key>::root);

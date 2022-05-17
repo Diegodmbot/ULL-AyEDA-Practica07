@@ -32,11 +32,17 @@ int main() {
     switch (opcion) {
       case 1:std::cout << "Ingrese clave: ";
         std::cin >> clave;
-        arbol->insertar(clave);
+        if(arbol->insertar(clave))
+          std::cout << "Clave insertada" << std::endl;
+        else
+          std::cout << "Clave ya existente" << std::endl;
         break;
       case 2:std::cout << "Ingrese clave: ";
         std::cin >> clave;
-        arbol->eliminar(clave);
+        if(arbol->eliminar(clave))
+          std::cout << "Clave eliminada" << std::endl;
+        else
+          std::cout << "Clave no existente" << std::endl;
         break;
       case 3:std::cout << "Ingrese clave: ";
         std::cin >> clave;
@@ -48,7 +54,6 @@ int main() {
       default:std::cout << "Opcion invalida" << std::endl;
     }
     // mostrar arbol
-    //std::cout << arbol << std::endl;
     arbol->Write();
   }
 }

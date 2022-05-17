@@ -13,8 +13,11 @@ class NodoB{
   ~NodoB() = default;
   NodoB<Key> *GetIzdo() const;
   NodoB<Key> *GetDcho() const;
+  NodoB<Key>*& GetIzdo() { return izdo; }
+  NodoB<Key>*& GetDcho() { return dcho; }
   void SetIzdo(NodoB<Key> *izdo);
   void SetDcho(NodoB<Key> *dcho);
+  void SetDato(Key dato_);
   Key GetDato() const;
  private:
   Key dato;
@@ -40,6 +43,10 @@ void NodoB<Key>::SetIzdo(NodoB<Key> *izdo) {
 template<class Key>
 void NodoB<Key>::SetDcho(NodoB<Key> *dcho) {
   NodoB::dcho = dcho;
+}
+template<class Key>
+void NodoB<Key>::SetDato(Key dato_) {
+  NodoB::dato = dato_;
 }
 
 #endif //P07DIEGODIAZMORON_INCLUDE_NODOB_H_

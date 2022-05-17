@@ -20,31 +20,6 @@ class AB {
   void inorden(NodoB<Key> *nodo) const;
   const int TamRama(NodoB<Key> *nodo);
   void Write();
-//  friend std::ostream &operator<<(std::ostream &os,AB<Key> &ab) {
-//    int k = 0;
-//    std::queue<NodoB<Key> *> cola, colaAux;
-//    cola.push(ab.root);
-//    while (!cola.empty()) {
-//      os << "Nivel " << k << ": ";
-//      while (!cola.empty()) {
-//        if (cola.front() != nullptr) {
-//          os << "[" << cola.front()->GetDato() << "]";
-//          colaAux.push(cola.front()->GetIzdo());
-//          colaAux.push(cola.front()->GetDcho());
-//        } else
-//          os << "[.]";
-//
-//        cola.pop();
-//      }
-//      cola = colaAux;
-//      while (!colaAux.empty()) {
-//        colaAux.pop();
-//      }
-//      k++;
-//      os << "\n\n";
-//    }
-//    return os;
-//  }
  protected:
   NodoB<Key> *root;
 };
